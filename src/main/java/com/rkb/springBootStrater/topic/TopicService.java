@@ -27,4 +27,25 @@ public class TopicService {
 	public void addTopic(Topic topic) {
 		topics.add(topic);
 	}
+
+	public void update(Topic topic, int id) {
+		
+//		topics.forEach(t -> {
+//			if(t.getId() == id) {
+//				t.setName(topic.getName());
+//				t.setDescription(topic.getDescription());
+//				return;
+//			}
+//		});
+		
+		Topic t1 = topics.stream().filter(t -> t.getId() == id).findFirst().get();
+		t1.setDescription(topic.getDescription());
+		t1.setName(topic.getName());
+		
+	}
+
+	public void delete(int id) {
+		topics.removeIf(t -> t.getId() == id);
+		
+	}
 }
